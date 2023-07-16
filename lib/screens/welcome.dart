@@ -26,64 +26,72 @@ class _WelcomeState extends State<Welcome> {
             ),
           ],
         ),
-        ListView(children: [
-          const SizedBox(
-            height: 250,
-          ),
-          Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
+        ListView(
+          children: [
+            const SizedBox(
+              height: 250,
             ),
-             child: Padding(
-                 padding: const EdgeInsets.symmetric(vertical: 12),
-                 child:
-                  Column(
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+              child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 40,),
-                      const Text("Welcome на Покровку!",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 25,
-                      ),),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      const Text(
+                        "Welcome на Покровку!",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 25,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Container(
-                        padding: const EdgeInsets.all(16.0),
-                        width: 320,
+                          padding: const EdgeInsets.all(16.0),
+                          width: 320,
                           height: 200,
-                          child: const Text("Покровка — один из самых современных университетских "
-                              "комплексов Москвы и России, где три огромных атриума связывают "
-                              "исторические здания в единое вышкинское пространство. Дом "
-                              "исследований, конференций, учебы и студенческой жизни Вышки, открытый городу.",
+                          child: const Text(
+                            "Покровка — один из самых современных университетских "
+                            "комплексов Москвы и России, где три огромных атриума связывают "
+                            "исторические здания в единое вышкинское пространство. Дом "
+                            "исследований, конференций, учебы и студенческой жизни Вышки, открытый городу.",
                             style: TextStyle(
                               color: Colors.black38,
                               fontSize: 12,
                             ),
-                          textAlign: TextAlign.center,)
-                      ),
-                      ElevatedButton(onPressed: onPressed,
+                            textAlign: TextAlign.center,
+                          )),
+                      TextButton(
+                        onPressed: onPressed,
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.grey),
-                          overlayColor: MaterialStateProperty.all(Colors.white70),
+                          foregroundColor: MaterialStateProperty.all(
+                              Color.fromARGB(255, 255, 142, 5)),
+                          overlayColor:
+                              MaterialStateProperty.all(Colors.white70),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
                             ),
                           ),
-                      ),child: const Text(
-                        "Построить маршрут"
                         ),
+                        child: const Text("Построить маршрут"),
                       )
                     ],
-                  )
-                ),
-             )
-        ],
+                  )),
+            )
+          ],
         )
       ],
     );
@@ -92,7 +100,10 @@ class _WelcomeState extends State<Welcome> {
   void onPressed() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Excursion_Settings(title: '',)),
+      MaterialPageRoute(
+          builder: (context) => Excursion_Settings(
+                title: '',
+              )),
     );
   }
 }
