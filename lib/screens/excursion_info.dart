@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:async';
 
 class ExcursionInfo extends StatefulWidget {
   const ExcursionInfo({super.key, required this.title});
@@ -18,48 +20,66 @@ class _ExcInfoState extends State<ExcursionInfo> {
           backgroundColor: Color.fromARGB(255, 255, 142, 5),
           foregroundColor: Colors.white,
         ),
-        body: ListView(padding: EdgeInsets.all(15), children: const [
-          SizedBox(
+        body: ListView(padding: EdgeInsets.all(15), children: [
+          const SizedBox(
             height: 10,
           ),
-          Text("Как выбрать точку отправления",
+          const Text("Навигация по Покровке",
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 15,
               )),
-          SizedBox(height: 7),
-          Text(
-              "- Для определения корпуса, в котором вы сейчас находитесь, "
-                  "посмотрие на табличку с буквой корпуса или на номер ближайшего "
-                  "кабинета (буква вначале и есть корпус)",
-              style: TextStyle(fontSize: 12, color: Colors.grey)),
-          Text("- Филетовая зона: D, G, F, K",
-              style: TextStyle(fontSize: 12, color: Colors.grey)),
-          SizedBox(height: 4),
-          Text("- Розовая зона: A, L",
-              style: TextStyle(fontSize: 12, color: Colors.grey)),
-          SizedBox(height: 4),
-          Text("- Оранжевая зона: M, N",
-              style: TextStyle(fontSize: 12, color: Colors.grey)),
-          SizedBox(height: 4),
-          Text("- Зеленая зона: R, S",
-              style: TextStyle(fontSize: 12, color: Colors.grey)),
-          SizedBox(height: 4),
-          Text("- Голубая зона: T, Z",
-              style: TextStyle(fontSize: 12, color: Colors.grey)),
-          SizedBox(
+          const SizedBox(height: 7),
+          TextButton(onPressed: onPressed, child: Text("Навигация")),
+          const SizedBox(
             height: 10,
           ),
-          Text("Время",
+          const Text("Время",
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 15,
               )),
-          SizedBox(height: 7),
-          Text(
+          const SizedBox(height: 7),
+          const Text(
               "- При расчете не учитывается дорога до нужного вам после "
-                  "экскурсии корпуса, это надо закладывать отделно",
+              "экскурсии корпуса, это надо закладывать отделно",
               style: TextStyle(fontSize: 12, color: Colors.grey)),
         ]));
+  }
+
+  void onPressed() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => MyWebView(
+              title: "Навигация",
+              selectedUrl: "https://navigation.hse.ru/?campus=pokrovka",
+            )));
+  }
+}
+
+class MyWebView extends StatelessWidget {
+  final String title;
+  final String selectedUrl;
+
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+
+  MyWebView({
+    required this.title,
+    required this.selectedUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: WebView(
+          initialUrl: selectedUrl,
+          javascriptMode: JavascriptMode.unrestricted,
+          onWebViewCreated: (WebViewController webViewController) {
+            _controller.complete(webViewController);
+          },
+        ));
   }
 }
