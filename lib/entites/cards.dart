@@ -2,7 +2,6 @@ import 'package:excursions_pokrovka/entites/garf_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:excursions_pokrovka/entites/tags.dart';
-import 'package:excursions_pokrovka/screens/excursion_info.dart';
 
 var placesList = [
   Card1(),
@@ -14,16 +13,6 @@ var placesList = [
   Card7(),
   Card8()
 ];
-
-void goToInfo(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-        builder: (context) => const ExcursionInfo(
-              title: '',
-            )),
-  );
-}
 
 Widget Card1() {
   return MaterialApp(

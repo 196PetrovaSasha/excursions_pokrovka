@@ -86,7 +86,8 @@ class _WelcomeState extends State<Welcome> {
                             ),
                           ),
                         ),
-                        child: const Text("Построить маршрут"),
+                        child: const Text("Построить маршрут",
+                        style: TextStyle(fontSize: 17),),
                       )
                     ],
                   )),

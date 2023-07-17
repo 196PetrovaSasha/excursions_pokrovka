@@ -11,8 +11,11 @@ class Excursion_Settings extends StatefulWidget {
   State<Excursion_Settings> createState() => _ExcursionSettingsState();
 }
 
-late String selected_block;
-late String selected_time;
+String? selected_block;
+String? selected_time;
+
+String final_select_block = "";
+String final_select_time = "";
 
 class _ExcursionSettingsState extends State<Excursion_Settings> {
   Color avatarColor = Colors.white24;
@@ -32,14 +35,14 @@ class _ExcursionSettingsState extends State<Excursion_Settings> {
 
   Widget DialogException(BuildContext context) {
     return AlertDialog(
-      title: Text("Ошибка :("),
-      content: Text("Вы не выбрали все параметры"),
+      title: const Text("Ошибка :("),
+      content: const Text("Вы не выбрали все параметры"),
       actions: [
         TextButton(
             onPressed: () {
               Navigator.pop(context, "OK");
             },
-            child: Text(
+            child: const Text(
               "OK",
               style: TextStyle(color: Color.fromARGB(255, 255, 142, 5)),
             ))
@@ -94,6 +97,7 @@ class _ExcursionSettingsState extends State<Excursion_Settings> {
                       onSelected: (String value) {
                         setState(() {
                           selected_block = value;
+                          final_select_block = value;
                           blockAvatar = "";
                           switch (value) {
                             case "purple":
@@ -153,6 +157,7 @@ class _ExcursionSettingsState extends State<Excursion_Settings> {
                       onSelected: (String value) {
                         setState(() {
                           selected_time = value;
+                          final_select_time = value;
                           timeAvatar = value;
                         });
                       },
@@ -173,7 +178,7 @@ class _ExcursionSettingsState extends State<Excursion_Settings> {
                       ],
                     ),
                   ),
-                  Divider(),
+                  const Divider(),
                   TextButton(
                     onPressed: () {
                       if (selected_block == null || selected_time == null) {
@@ -186,15 +191,17 @@ class _ExcursionSettingsState extends State<Excursion_Settings> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Excursion(
+                              builder: (context) => const Excursion(
                                     title: '',
                                   )),
                         );
                       }
                     },
-                    child: Text(
+                    child: const Text(
                       "Начать экскурсию",
-                      style: TextStyle(color: Color.fromARGB(255, 255, 142, 5)),
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 142, 5),
+                          fontSize: 17),
                     ),
                   ),
                 ],
