@@ -11,11 +11,12 @@ class Excursion_Settings extends StatefulWidget {
   State<Excursion_Settings> createState() => _ExcursionSettingsState();
 }
 
+late String selected_block;
+late String selected_time;
+
 class _ExcursionSettingsState extends State<Excursion_Settings> {
   Color avatarColor = Colors.white24;
   String blockAvatar = '?';
-  String? selected_block;
-  String? selected_time;
   Color textAvatarColor = Colors.grey;
   String timeAvatar = '?';
 
@@ -90,7 +91,7 @@ class _ExcursionSettingsState extends State<Excursion_Settings> {
                         backgroundColor: avatarColor, child: Text(blockAvatar)),
                     subtitle: const Text('Выбрать пункт отправления'),
                     trailing: PopupMenuButton<String>(
-                      onSelected: (String? value) {
+                      onSelected: (String value) {
                         setState(() {
                           selected_block = value;
                           blockAvatar = "";

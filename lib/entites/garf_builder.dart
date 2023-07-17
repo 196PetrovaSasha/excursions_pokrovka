@@ -1,11 +1,16 @@
 import 'dart:math';
+import 'package:flutter/material.dart';
 
 class Place {
   final int significance;
   final int timeToVisit;
   final int id;
 
-  const Place(this.significance, this.timeToVisit, this.id);
+  Place({
+    required this.significance,
+    required this.timeToVisit,
+    required this.id,
+  });
 }
 
 class Route {
@@ -81,17 +86,17 @@ class GraphEngine {
   }
 }
 
-void grafFinalBuilding(int time, String start) {
+List<int> grafFinalBuilding(int time, String start) {
   GraphEngine graphEngine = GraphEngine(
-    const [
-      Place(5, 2, 0),
-      Place(3, 2, 1),
-      Place(6, 2, 2),
-      Place(6, 3, 3),
-      Place(3, 2, 4),
-      Place(6, 4, 5),
-      Place(6, 4, 6),
-      Place(4, 2, 7),
+    [
+      Place(significance: 5, timeToVisit: 2, id: 0),
+      Place(significance: 3, timeToVisit: 2, id: 1),
+      Place(significance: 6, timeToVisit: 2, id: 2),
+      Place(significance: 6, timeToVisit: 3, id: 3),
+      Place(significance: 3, timeToVisit: 2, id: 4),
+      Place(significance: 6, timeToVisit: 4, id: 5),
+      Place(significance: 6, timeToVisit: 4, id: 6),
+      Place(significance: 4, timeToVisit: 2, id: 7),
     ],
     [
       Route(0, 1, 2),
@@ -112,23 +117,28 @@ void grafFinalBuilding(int time, String start) {
   int start_point = -1;
   switch (start) {
     case "purple":
-      start_point = 1;
+      start_point = 0;
       break;
     case "pink":
       start_point = 2;
       break;
     case "orange":
-    //start_point =
-  }
-  var allExcursions = graphEngine.getAllSatisfyingPaths(6, time);
-  int i = 0;
-  for (var excursion in allExcursions) {
-    print(
-        'S: ${excursion.significance} D: ${excursion.duration} P: ${excursion.placesIDs.join("->")}');
-    if (++i > 5) {
+      start_point = 3;
       break;
-    }
+    case "green":
+      start_point = 4;
+      break;
+    case "blue":
+      start_point = 6;
+      break;
   }
+  var allExcursions = graphEngine.getAllSatisfyingPaths(start_point, time);
+  var excursion = allExcursions[0];
+  List<int> points = [];
+  for(var el in excursion.placesIDs) {
+    points.add(el);
+  }
+  return points;
 }
 
 var desc = const [
@@ -166,24 +176,3 @@ var desc = const [
       "со шкафчиками и душем.      "
 ];
 
-var names = const [
-  "Кафе и переговорная",
-  "Мраморная лестница",
-  "Атриум",
-  "Столовая и библиотека",
-  "Коворкинг",
-  "Корпуса S, R",
-  "Культурный центр",
-  "Зал"
-];
-
-var images = const [
-  "images/places/F.jpg",
-  "images/places/stairway.jpg",
-  "images/places/atrium.jpg",
-  "images/places/library.jpg",
-  "images/places/Cov.jpg",
-  "images/places/S.jpg",
-  "images/places/kc.jpg",
-  "images/places/gym.jpg"
-];
