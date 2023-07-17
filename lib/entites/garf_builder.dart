@@ -126,7 +126,7 @@ List<int> grafFinalBuilding(int time, String start) {
       start_point = 3;
       break;
     case "green":
-      start_point = 4;
+      start_point = 5;
       break;
     case "blue":
       start_point = 6;

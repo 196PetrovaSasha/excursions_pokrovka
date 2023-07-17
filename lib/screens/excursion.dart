@@ -1,3 +1,4 @@
+import 'package:excursions_pokrovka/screens/excursion_info.dart';
 import 'package:flutter/material.dart';
 import 'package:excursions_pokrovka/entites/garf_builder.dart';
 import 'package:excursions_pokrovka/entites/cards.dart';
@@ -27,9 +28,28 @@ class _ExcursionState extends State<Excursion> {
   @override
   Widget build(BuildContext context) {
     final PageController controller = PageController();
-    return PageView(
-      controller: controller,
-      children: listBuild(),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 142, 5),
+        foregroundColor: Colors.white,
+        actions: [
+          IconButton(onPressed: onPressed, icon: Icon(Icons.info))
+        ]
+      ),
+      body: PageView(
+        controller: controller,
+        children: listBuild(),
+      )
+    );
+  }
+
+  void onPressed() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => const ExcursionInfo(
+            title: '',
+          )),
     );
   }
 }
