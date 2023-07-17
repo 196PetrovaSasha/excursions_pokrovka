@@ -34,16 +34,6 @@ class _ExcInfoState extends State<ExcursionInfo> {
           const SizedBox(
             height: 10,
           ),
-          const Text("Время",
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 15,
-              )),
-          const SizedBox(height: 7),
-          const Text(
-              "- При расчете не учитывается дорога до нужного вам после "
-              "экскурсии корпуса, это надо закладывать отделно",
-              style: TextStyle(fontSize: 12, color: Colors.grey)),
         ]));
   }
 
