@@ -278,7 +278,7 @@ Widget Card4() {
             height: 20,
           ),
           const Text(
-            "Соловая и библиотека",
+            "Столовая и библиотека",
             style: TextStyle(
                 color: Color.fromARGB(188, 21, 17, 17),
                 fontSize: 20,

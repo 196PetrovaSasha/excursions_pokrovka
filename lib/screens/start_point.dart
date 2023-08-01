@@ -78,7 +78,7 @@ class _ExcursionSettingsState extends State<Excursion_Settings> {
               height: 400,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("images/scheme.jpg"),
+                      image: AssetImage("images/final_plan.jpg"),
                       fit: BoxFit.cover)),
             ),
             Container(
@@ -151,8 +151,8 @@ class _ExcursionSettingsState extends State<Excursion_Settings> {
                       foregroundColor: textAvatarColor,
                       backgroundColor: Colors.white24,
                     ),
-                    title: const Text('Время экскурсии'),
-                    subtitle: const Text('Сколько будет идти экскурсия'),
+                    title: const Text('Время на экскурсию'),
+                    subtitle: const Text('Сколько времени вы готовы потратить на экскурсию'),
                     trailing: PopupMenuButton<String>(
                       onSelected: (String value) {
                         setState(() {

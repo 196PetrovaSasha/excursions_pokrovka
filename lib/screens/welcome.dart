@@ -39,8 +39,15 @@ class _WelcomeState extends State<Welcome> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: Padding(
+              child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("images/fcs_tree.jpg"),
+                      opacity: 0.2,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,7 +59,8 @@ class _WelcomeState extends State<Welcome> {
                         "Welcome на Покровку!",
                         style: TextStyle(
                           color: Colors.black54,
-                          fontSize: 25,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(
@@ -60,7 +68,7 @@ class _WelcomeState extends State<Welcome> {
                       ),
                       Container(
                           padding: const EdgeInsets.all(16.0),
-                          width: 320,
+                          width: 370,
                           height: 200,
                           child: const Text(
                             "Покровка — один из самых современных университетских "
@@ -68,8 +76,8 @@ class _WelcomeState extends State<Welcome> {
                             "исторические здания в единое вышкинское пространство. Дом "
                             "исследований, конференций, учебы и студенческой жизни Вышки, открытый городу.",
                             style: TextStyle(
-                              color: Colors.black38,
-                              fontSize: 12,
+                              color: Colors.black54,
+                              fontSize: 14,
                             ),
                             textAlign: TextAlign.center,
                           )),
@@ -87,7 +95,7 @@ class _WelcomeState extends State<Welcome> {
                           ),
                         ),
                         child: const Text("Построить маршрут",
-                        style: TextStyle(fontSize: 17),),
+                        style: TextStyle(fontSize: 20),),
                       )
                     ],
                   )),

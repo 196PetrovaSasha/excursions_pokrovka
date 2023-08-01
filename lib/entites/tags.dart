@@ -39,7 +39,7 @@ var chips = [
     ),
     avatar: Icon(Icons.school,
       color: Colors.black38,),
-    label: Text('Зона учебы'),
+    label: Text('Место учебы'),
   ),
   const Chip(
     backgroundColor: Colors.white,
